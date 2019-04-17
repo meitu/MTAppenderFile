@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
     simplified high-performance log component base on mmap, with C & Objective-C API.
                    DESC
 
-  s.homepage     = "https://github.com/MTlab/MTAppenderFile"
+  s.homepage     = "https://github.com/meitu/MTAppenderFile"
   s.license      = {
     :type => 'Copyright',
     :text => <<-LICENSE
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "git@github.com:MTlab/MTAppenderFile.git", :tag => "#{s.version}" }
+  s.source       = { :git => "git@github.com:meitu/MTAppenderFile.git", :tag => "#{s.version}" }
 
   s.public_header_files = "loglib/MTAppenderFile.h", "loglib/mtaf_appender.h"
   s.source_files  = "loglib/**/*{h,hpp,m,mm,cpp,cc,c}", "comm/**/*.{h,hpp,m,mm,cpp,cc,c}"

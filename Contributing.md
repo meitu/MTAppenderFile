@@ -1,6 +1,6 @@
 # Contributing to MTAppenderFile
 
-Welcome to [report Issues](https://github.com/MTlab/MTAppenderFile/issues) or [pull requests](https://github.com/MTlab/MTAppenderFile/pulls). It's recommended to read the following Contributing Guide first before contributing.
+Welcome to [report Issues](https://github.com/meitu/MTAppenderFile/issues) or [pull requests](https://github.com/meitu/MTAppenderFile/pulls). It's recommended to read the following Contributing Guide first before contributing.
 
 ## Issues
 

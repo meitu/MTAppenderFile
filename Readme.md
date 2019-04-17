@@ -1,6 +1,6 @@
 # MTAppenderFile
 
-A simplified high-performance log component for *OS base on Tencent Mars xlog, is used in [MTHawkeye](https://github.com/MTlab/MTHawkeye) for performance record data persistance.
+A simplified high-performance log component for *OS base on Tencent Mars xlog, is used in [MTHawkeye](https://github.com/meitu/MTHawkeye) for performance record data persistance.
 
 ## Usage
 

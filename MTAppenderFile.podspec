@@ -19,13 +19,15 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-  s.source       = { :git => "git@github.com:meitu/MTAppenderFile.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/meitu/MTAppenderFile.git", :tag => "#{s.version}" }
 
-  s.public_header_files = "loglib/MTAppenderFile.h", "loglib/mtaf_appender.h"
+  s.public_header_files = "loglib/MTAppenderFile.h", "loglib/mtaf_base.h" "loglib/mtaf_appender.h"
   s.source_files  = "loglib/**/*{h,hpp,m,mm,cpp,cc,c}", "comm/**/*.{h,hpp,m,mm,cpp,cc,c}"
   s.exclude_files = "MTAppenderFile/Exclude"
 
   s.requires_arc = false
+  
+  s.libraries = "z", "c++"
 
   s.xcconfig = { 'OTHER_LDFLAGS' => '-lc++' }
 

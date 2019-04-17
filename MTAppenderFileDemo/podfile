@@ -15,9 +15,6 @@ target 'MTAppenderFileDemo' do
   target 'MTAppenderFileDemoTests' do
   end
 
-  target 'MTAppenderFileDemoUITests' do
-  end
-
   # 开启所有 pod 引入库的 ccache，加快重复编译速度
   post_install do |installer_representation|
       installer_representation.pods_project.targets.each do |target|

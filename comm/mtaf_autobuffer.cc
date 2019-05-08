@@ -11,11 +11,11 @@
 // limitations under the License.
 
 
-#include "autobuffer.h"
+#include "mtaf_autobuffer.h"
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "__assert.h"
+#include "__mtaf_assert.h"
 using namespace MTAppenderFile;
 
 const AutoBuffer KNullAtuoBuffer;

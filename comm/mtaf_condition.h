@@ -19,9 +19,9 @@
 #include <pthread.h>
 #include <sys/time.h>
 
-#include "__assert.h"
-#include "atomic_oper.h"
-#include "lock.h"
+#include "__mtaf_assert.h"
+#include "mtaf_atomic_oper.h"
+#include "mtaf_lock.h"
 
 namespace MTAppenderFile {
 class Condition;

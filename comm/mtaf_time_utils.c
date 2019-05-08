@@ -22,7 +22,6 @@
 
 #include <android_alarm.h>
 #include <fcntl.h>
-#include "redefine.h"
 
 uint64_t mtaf_gettickcount() {
     static int s_fd = -1;

@@ -17,10 +17,10 @@
 
 #include <unistd.h>
 
-#include "__assert.h"
-#include "mutex.h"
-#include "spinlock.h"
-#include "time_utils.h"
+#include "__mtaf_assert.h"
+#include "mtaf_mutex.h"
+#include "mtaf_spinlock.h"
+#include "mtaf_time_utils.h"
 
 namespace MTAppenderFile {
 template <typename MutexType>
@@ -31,16 +31,16 @@ template <typename MutexType>
 class MTAppenderFile::BaseScopedLock
 {
   public:
-    explicit BaseScopedLock(MutexType &mutex, bool initiallyLocked = true)
-        : mutex_(mutex)
+    explicit BaseScopedLock(MutexType &mtaf_mtaf_mutex, bool initiallyLocked = true)
+        : mutex_(mtaf_mtaf_mutex)
         , islocked_(false) {
         if (!initiallyLocked) return;
 
         lock();
     }
 
-    explicit BaseScopedLock(MutexType &mutex, long _millisecond)
-        : mutex_(mutex)
+    explicit BaseScopedLock(MutexType &mtaf_mtaf_mutex, long _millisecond)
+        : mutex_(mtaf_mtaf_mutex)
         , islocked_(false) {
         timedlock(_millisecond);
     }
@@ -85,7 +85,7 @@ class MTAppenderFile::BaseScopedLock
 
         if (islocked_) return true;
 
-        islocked_ = mutex_.timedlock(_millisecond);
+        islocked_ = mtaf_mutex.timedlock(_millisecond);
         return islocked_;
     }
 #else

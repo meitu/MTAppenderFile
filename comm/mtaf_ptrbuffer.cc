@@ -16,12 +16,12 @@
 //  Created by yerungui on 13-4-4.
 //
 
-#include "ptrbuffer.h"
+#include "mtaf_ptrbuffer.h"
 
 #include <stdio.h>
 #include <string.h>
 
-#include "__assert.h"
+#include "__mtaf_assert.h"
 
 using namespace MTAppenderFile;
 

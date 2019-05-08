@@ -20,8 +20,8 @@
 #include <stdint.h>
 #include <sys/time.h>
 
-#include "__assert.h"
-#include "time_utils.h"
+#include "__mtaf_assert.h"
+#include "mtaf_time_utils.h"
 namespace MTAppenderFile {
 class Mutex;
 }

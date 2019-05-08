@@ -21,9 +21,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "__assert.h"
-#include "condition.h"
-#include "runnable.h"
+#include "__mtaf_assert.h"
+#include "mtaf_condition.h"
+#include "mtaf_runnable.h"
 
 typedef pthread_t thread_tid;
 //注意！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！

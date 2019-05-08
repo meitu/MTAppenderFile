@@ -23,8 +23,8 @@
 #include <stdint.h>
 #include <string>
 #include <zlib.h>
-#include "autobuffer.h"
-#include "ptrbuffer.h"
+#include "mtaf_autobuffer.h"
+#include "mtaf_ptrbuffer.h"
 
 class MTAppenderFileLogCrypt;
 

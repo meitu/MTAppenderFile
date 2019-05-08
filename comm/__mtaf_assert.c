@@ -11,7 +11,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#include "compiler_util.h"
+#include "mtaf_compiler_util.h"
 
 #ifndef XLOGGER_TAG
 #define XLOGGER_TAG ""

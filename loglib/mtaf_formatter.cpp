@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <cstdio>
 #include "mtaf_base.h"
-#include "ptrbuffer.h"
+#include "mtaf_ptrbuffer.h"
 
 #define __STDC_FORMAT_MACROS
 #include <inttypes.h>

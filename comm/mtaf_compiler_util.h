@@ -12,31 +12,37 @@
 
 
 /*
- * utils.h
+ * mtaf_compiler_util.h
  *
- *  Created on: 2012-7-18
+ *  Created on: 2013-11-15
  *      Author: yerungui
  */
 
-#ifndef MTAF_COMM_UTILS_H_
-#define MTAF_COMM_UTILS_H_
+#ifndef MTAF_COMM_COMPILER_UTIL_H_
+#define MTAF_COMM_COMPILER_UTIL_H_
 
-#include <stdint.h>
-#include <stdio.h>
-
-#ifdef __cplusplus
-extern "C" {
+#if defined(__GNUC__)
+#define WEAK_FUNC __attribute__((weak))
+#elif defined(_MSC_VER) && !defined(_LIB)
+#define WEAK_FUNC __declspec(selectany)
+#else
+#define WEAK_FUNC
 #endif
 
-uint64_t mtaf_gettickcount();                 // ms
-int64_t mtaf_gettickspan(uint64_t _old_tick); // ms
-uint64_t mtaf_timeMs();
-
-uint64_t mtaf_clock_app_monotonic(); // ms
-
-#ifdef __cplusplus
-}
+#if defined(__GNUC__)
+#define EXPORT_FUNC __attribute__((visibility("default")))
+#elif defined(_MSC_VER)
+#define EXPORT_FUNC __declspec(dllexport)
+#else
+#error "export"
 #endif
 
+#ifndef VARIABLE_IS_NOT_USED
+#ifdef __GNUC__
+#define VARIABLE_IS_NOT_USED __attribute__((unused))
+#else
+#define VARIABLE_IS_NOT_USED
+#endif
+#endif
 
-#endif /* MTAF_COMM_UTILS_H_ */
+#endif /* MTAF_COMM_COMPILER_UTIL_H_ */

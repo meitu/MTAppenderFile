@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		209634FC20F4B41200207AD8 /* time_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 209634E820F4B41200207AD8 /* time_utils.c */; };
-		209634FD20F4B41200207AD8 /* ptrbuffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 209634EF20F4B41200207AD8 /* ptrbuffer.cc */; };
-		209634FE20F4B41200207AD8 /* autobuffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 209634F120F4B41200207AD8 /* autobuffer.cc */; };
-		209634FF20F4B41200207AD8 /* __assert.c in Sources */ = {isa = PBXBuildFile; fileRef = 209634FB20F4B41200207AD8 /* __assert.c */; };
+		209634FC20F4B41200207AD8 /* mtaf_time_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 209634E820F4B41200207AD8 /* mtaf_time_utils.c */; };
+		209634FD20F4B41200207AD8 /* mtaf_ptrbuffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 209634EF20F4B41200207AD8 /* mtaf_ptrbuffer.cc */; };
+		209634FE20F4B41200207AD8 /* mtaf_autobuffer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 209634F120F4B41200207AD8 /* mtaf_autobuffer.cc */; };
+		209634FF20F4B41200207AD8 /* __mtaf_assert.c in Sources */ = {isa = PBXBuildFile; fileRef = 209634FB20F4B41200207AD8 /* __mtaf_assert.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,21 +27,21 @@
 
 /* Begin PBXFileReference section */
 		20926E981FE509F4000DBD07 /* libcomm.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libcomm.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		209634E820F4B41200207AD8 /* time_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = time_utils.c; sourceTree = "<group>"; };
-		209634E920F4B41200207AD8 /* compiler_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compiler_util.h; sourceTree = "<group>"; };
-		209634EA20F4B41200207AD8 /* spinlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spinlock.h; sourceTree = "<group>"; };
-		209634EC20F4B41200207AD8 /* condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = condition.h; sourceTree = "<group>"; };
-		209634ED20F4B41200207AD8 /* ptrbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ptrbuffer.h; sourceTree = "<group>"; };
-		209634EE20F4B41200207AD8 /* lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock.h; sourceTree = "<group>"; };
-		209634EF20F4B41200207AD8 /* ptrbuffer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ptrbuffer.cc; sourceTree = "<group>"; };
-		209634F020F4B41200207AD8 /* __assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __assert.h; sourceTree = "<group>"; };
-		209634F120F4B41200207AD8 /* autobuffer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = autobuffer.cc; sourceTree = "<group>"; };
-		209634F220F4B41200207AD8 /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = thread.h; sourceTree = "<group>"; };
-		209634F320F4B41200207AD8 /* time_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = time_utils.h; sourceTree = "<group>"; };
-		209634F420F4B41200207AD8 /* atomic_oper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic_oper.h; sourceTree = "<group>"; };
-		209634F620F4B41200207AD8 /* autobuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autobuffer.h; sourceTree = "<group>"; };
-		209634F720F4B41200207AD8 /* mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mutex.h; sourceTree = "<group>"; };
-		209634FB20F4B41200207AD8 /* __assert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = __assert.c; sourceTree = "<group>"; };
+		209634E820F4B41200207AD8 /* mtaf_time_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mtaf_time_utils.c; sourceTree = "<group>"; };
+		209634E920F4B41200207AD8 /* mtaf_compiler_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_compiler_util.h; sourceTree = "<group>"; };
+		209634EA20F4B41200207AD8 /* mtaf_spinlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_spinlock.h; sourceTree = "<group>"; };
+		209634EC20F4B41200207AD8 /* mtaf_condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_condition.h; sourceTree = "<group>"; };
+		209634ED20F4B41200207AD8 /* mtaf_ptrbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_ptrbuffer.h; sourceTree = "<group>"; };
+		209634EE20F4B41200207AD8 /* mtaf_lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_lock.h; sourceTree = "<group>"; };
+		209634EF20F4B41200207AD8 /* mtaf_ptrbuffer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mtaf_ptrbuffer.cc; sourceTree = "<group>"; };
+		209634F020F4B41200207AD8 /* __mtaf_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = __mtaf_assert.h; sourceTree = "<group>"; };
+		209634F120F4B41200207AD8 /* mtaf_autobuffer.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mtaf_autobuffer.cc; sourceTree = "<group>"; };
+		209634F220F4B41200207AD8 /* mtaf_thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_thread.h; sourceTree = "<group>"; };
+		209634F320F4B41200207AD8 /* mtaf_time_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_time_utils.h; sourceTree = "<group>"; };
+		209634F420F4B41200207AD8 /* mtaf_atomic_oper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_atomic_oper.h; sourceTree = "<group>"; };
+		209634F620F4B41200207AD8 /* mtaf_autobuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_autobuffer.h; sourceTree = "<group>"; };
+		209634F720F4B41200207AD8 /* mtaf_mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtaf_mutex.h; sourceTree = "<group>"; };
+		209634FB20F4B41200207AD8 /* __mtaf_assert.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = __mtaf_assert.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,21 +74,21 @@
 		209634E720F4B41200207AD8 /* comm */ = {
 			isa = PBXGroup;
 			children = (
-				209634FB20F4B41200207AD8 /* __assert.c */,
-				209634F020F4B41200207AD8 /* __assert.h */,
-				209634F420F4B41200207AD8 /* atomic_oper.h */,
-				209634F120F4B41200207AD8 /* autobuffer.cc */,
-				209634F620F4B41200207AD8 /* autobuffer.h */,
-				209634E920F4B41200207AD8 /* compiler_util.h */,
-				209634EC20F4B41200207AD8 /* condition.h */,
-				209634EE20F4B41200207AD8 /* lock.h */,
-				209634F720F4B41200207AD8 /* mutex.h */,
-				209634EF20F4B41200207AD8 /* ptrbuffer.cc */,
-				209634ED20F4B41200207AD8 /* ptrbuffer.h */,
-				209634EA20F4B41200207AD8 /* spinlock.h */,
-				209634F220F4B41200207AD8 /* thread.h */,
-				209634E820F4B41200207AD8 /* time_utils.c */,
-				209634F320F4B41200207AD8 /* time_utils.h */,
+				209634FB20F4B41200207AD8 /* __mtaf_assert.c */,
+				209634F020F4B41200207AD8 /* __mtaf_assert.h */,
+				209634F420F4B41200207AD8 /* mtaf_atomic_oper.h */,
+				209634F120F4B41200207AD8 /* mtaf_autobuffer.cc */,
+				209634F620F4B41200207AD8 /* mtaf_autobuffer.h */,
+				209634E920F4B41200207AD8 /* mtaf_compiler_util.h */,
+				209634EC20F4B41200207AD8 /* mtaf_condition.h */,
+				209634EE20F4B41200207AD8 /* mtaf_lock.h */,
+				209634F720F4B41200207AD8 /* mtaf_mutex.h */,
+				209634EF20F4B41200207AD8 /* mtaf_ptrbuffer.cc */,
+				209634ED20F4B41200207AD8 /* mtaf_ptrbuffer.h */,
+				209634EA20F4B41200207AD8 /* mtaf_spinlock.h */,
+				209634F220F4B41200207AD8 /* mtaf_thread.h */,
+				209634E820F4B41200207AD8 /* mtaf_time_utils.c */,
+				209634F320F4B41200207AD8 /* mtaf_time_utils.h */,
 			);
 			name = comm;
 			sourceTree = "<group>";
@@ -150,10 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				209634FD20F4B41200207AD8 /* ptrbuffer.cc in Sources */,
-				209634FE20F4B41200207AD8 /* autobuffer.cc in Sources */,
-				209634FF20F4B41200207AD8 /* __assert.c in Sources */,
-				209634FC20F4B41200207AD8 /* time_utils.c in Sources */,
+				209634FD20F4B41200207AD8 /* mtaf_ptrbuffer.cc in Sources */,
+				209634FE20F4B41200207AD8 /* mtaf_autobuffer.cc in Sources */,
+				209634FF20F4B41200207AD8 /* __mtaf_assert.c in Sources */,
+				209634FC20F4B41200207AD8 /* mtaf_time_utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

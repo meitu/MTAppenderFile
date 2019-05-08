@@ -2,9 +2,9 @@
 // Created by meitu on 2017/3/23.
 //
 
-#include "condition.h"
-#include "lock.h"
-#include "thread.h"
+#include "mtaf_condition.h"
+#include "mtaf_lock.h"
+#include "mtaf_thread.h"
 
 #include "mtaf_appender.h"
 #include "mtaf_base.h"
@@ -157,7 +157,7 @@ void mtaf_log_appender_destroy(mtaf_log_appender *mlog) {
             break;
         }
     }
-    
+
     shared_spinlock()->unlock();
 
     delete mlog;
@@ -312,12 +312,12 @@ static void __log2file(mtaf_log_appender *mlog, const void *_data, size_t _len) 
 
 static void __log_thread_task(mtaf_log_appender *mlog) {
     if (NULL == mlog->sg_log_buff) return;
-    
+
     ScopedLock lock_buffer(mlog->sg_mutex_buffer_async);
     AutoBuffer tmp;
     mlog->sg_log_buff->Flush(tmp);
     lock_buffer.unlock();
-    
+
     if (NULL != tmp.Ptr()) {
         __log2file(mlog, tmp.Ptr(), tmp.Length());
     }
@@ -326,12 +326,12 @@ static void __log_thread_task(mtaf_log_appender *mlog) {
 static void __async_log_shared_thread_operation() {
     while (true) {
         shared_spinlock()->lock();
-        
+
         if (shared_appenders()->empty()) {
             shared_spinlock()->unlock();
             break;
         }
-        
+
         for (auto it = shared_appenders()->begin(); it != shared_appenders()->end(); it++) {
             mtaf_log_appender *mlog = *it;
             if (mlog->sg_log_close) {
@@ -340,9 +340,9 @@ static void __async_log_shared_thread_operation() {
 
             __log_thread_task(mlog);
         }
-        
+
         shared_spinlock()->unlock();
-        
+
         shared_condition()->wait(15 * 60 * 1000);
     }
 }
@@ -353,13 +353,13 @@ static void __async_log_thread_operation(void *arg) {
         if (NULL == mlog->sg_log_buff) {
             break;
         }
-        
+
         __log_thread_task(mlog);
-    
+
         if (mlog->sg_log_close) {
             break;
         }
-        
+
         mlog->sg_cond_buffer_async.wait(15 * 60 * 1000);
     }
 }
@@ -446,13 +446,13 @@ void mtaf_log_appender_close(mtaf_log_appender *mlog) {
     if (mlog->sg_thread_async->isruning() && mlog->sg_thread_async != shared_thread()) {
         mlog->sg_thread_async->join();
     }
-    
+
     // 使用共享线程
     shared_condition()->notifyAll();
     if (mlog->sg_thread_async == shared_thread()) {
         __log_thread_task(mlog);
     }
-    
+
     ScopedLock buffer_lock(mlog->sg_mutex_buffer_async);
     if (mlog->sg_mmap_file->isOpen) {
         memset(mlog->sg_mmap_file->start, 0, mlog->sg_bufferblock_length);

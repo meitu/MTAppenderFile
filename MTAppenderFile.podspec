@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MTAppenderFile"
-  s.version      = "0.4.0"
+  s.version      = "0.4.1"
   s.summary      = "A simplified high-performance log component for *OS base on Tencent Mars xlog."
 
   s.description  = <<-DESC

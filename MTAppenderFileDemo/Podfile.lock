@@ -1,5 +1,5 @@
 PODS:
-  - MTAppenderFile (0.4.2)
+  - MTAppenderFile (0.4.3)
 
 DEPENDENCIES:
   - MTAppenderFile (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  MTAppenderFile: fd4823b4844d9918e45770d3028580d72914b27c
+  MTAppenderFile: c7db8f33a8140ee2275a6200305fd11e609fae33
 
 PODFILE CHECKSUM: 3b1d41fd5c4fbf8fdffd123fce85fa19917bc300
 

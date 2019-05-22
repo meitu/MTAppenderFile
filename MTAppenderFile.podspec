@@ -29,6 +29,6 @@ Pod::Spec.new do |s|
   
   s.libraries = "z", "c++"
 
-  s.xcconfig = { 'OTHER_LDFLAGS' => '-lc++' }
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lc++' }
 
 end

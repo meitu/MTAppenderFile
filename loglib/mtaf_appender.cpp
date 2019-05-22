@@ -80,7 +80,7 @@ static Condition *__private_shared_condition = nullptr;
 void _initialize_share_condition() {
     __private_shared_condition = new Condition();
 }
-inline Condition *shared_condition() {
+Condition *shared_condition() {
     static std::once_flag initFlag;
     std::call_once(initFlag, _initialize_share_condition);
     return __private_shared_condition;
@@ -90,7 +90,7 @@ static SpinLock *__private_shared_spinlock;
 void _initialize_shared_spinlock() {
     __private_shared_spinlock = new SpinLock();
 }
-inline SpinLock *shared_spinlock() {
+SpinLock *shared_spinlock() {
     static std::once_flag initFlag;
     std::call_once(initFlag, _initialize_shared_spinlock);
     return __private_shared_spinlock;
@@ -100,7 +100,7 @@ static Thread *__private_shared_thread;
 void _initialize_shared_thread() {
     __private_shared_thread = new Thread("com.meitu.log.share_appender_file");
 }
-inline Thread *shared_thread() {
+Thread *shared_thread() {
     static std::once_flag initFlag;
     std::call_once(initFlag, _initialize_shared_thread);
     return __private_shared_thread;
@@ -110,7 +110,7 @@ static std::vector<mtaf_log_appender *> *p_shared_appenders;
 void _initialize_shared_appenders() {
     p_shared_appenders = new std::vector<mtaf_log_appender *>;
 }
-inline std::vector<mtaf_log_appender *> *shared_appenders() {
+std::vector<mtaf_log_appender *> *shared_appenders() {
     static std::once_flag initFlag;
     std::call_once(initFlag, _initialize_shared_appenders);
     return p_shared_appenders;

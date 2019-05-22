@@ -77,7 +77,7 @@ static void __async_log_shared_thread_operation();
 // objc load() run before global cpp static variable inilization,
 // so use the function instead of global static variable.
 static Condition *__private_shared_condition = nullptr;
-inline void _initialize_share_condition() {
+void _initialize_share_condition() {
     __private_shared_condition = new Condition();
 }
 inline Condition *shared_condition() {
@@ -87,7 +87,7 @@ inline Condition *shared_condition() {
 }
 
 static SpinLock *__private_shared_spinlock;
-inline void _initialize_shared_spinlock() {
+void _initialize_shared_spinlock() {
     __private_shared_spinlock = new SpinLock();
 }
 inline SpinLock *shared_spinlock() {
@@ -97,7 +97,7 @@ inline SpinLock *shared_spinlock() {
 }
 
 static Thread *__private_shared_thread;
-inline void _initialize_shared_thread() {
+void _initialize_shared_thread() {
     __private_shared_thread = new Thread("com.meitu.log.share_appender_file");
 }
 inline Thread *shared_thread() {
@@ -107,7 +107,7 @@ inline Thread *shared_thread() {
 }
 
 static std::vector<mtaf_log_appender *> *p_shared_appenders;
-inline void _initialize_shared_appenders() {
+void _initialize_shared_appenders() {
     p_shared_appenders = new std::vector<mtaf_log_appender *>;
 }
 inline std::vector<mtaf_log_appender *> *shared_appenders() {

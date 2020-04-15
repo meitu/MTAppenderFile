@@ -21,6 +21,7 @@
 
 #include <string.h>
 #include <sys/types.h>
+#include <atomic> 
 
 namespace MTAppenderFile {
 class PtrBuffer;
@@ -86,9 +87,9 @@ class MTAppenderFile::PtrBuffer
 
   private:
     unsigned char *parray_;
-    off_t pos_;
-    size_t length_;
-    size_t max_length_;
+    std::atomic<off_t> pos_;
+    std::atomic_size_t length_;
+    std::atomic_size_t max_length_;
 };
 
 extern const MTAppenderFile::PtrBuffer KNullPtrBuffer;

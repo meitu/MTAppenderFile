@@ -42,7 +42,7 @@ struct mtaf_log_appender_t {
 
     Mutex sg_mutex_log_file;
 
-    volatile bool sg_log_close;
+    std::atomic_bool sg_log_close;
 
     mtaf_mmapped_file *sg_mmap_file;
 
@@ -123,7 +123,7 @@ mtaf_log_appender *mtaf_log_appender_create(bool use_share_thread) {
         return NULL;
     }
 
-    mlog->sg_log_close = true;
+    mlog->sg_log_close.store(true);
     mlog->sg_log_buff = NULL;
     mlog->sg_logfile = NULL;
     mlog->sg_openfiletime = 0;
@@ -170,7 +170,7 @@ void mtaf_log_appender_open(mtaf_log_appender *mlog, mtaf_append_mode _mode, con
         printf("mt_appender_open : MTLogAppender is NULL\n");
         return;
     }
-    if (!mlog->sg_log_close) {
+    if (!mlog->sg_log_close.load()) {
         printf("appender has already been opened. _dir:%s _name:%s\n", filedir, filename);
         return;
     }
@@ -205,7 +205,7 @@ void mtaf_log_appender_open(mtaf_log_appender *mlog, mtaf_append_mode _mode, con
     ScopedLock lock(mlog->sg_mutex_log_file);
     mlog->sg_logdir = filedir;
     mlog->sg_logfilename = filename;
-    mlog->sg_log_close = false;
+    mlog->sg_log_close.store(false);
     mtaf_log_appender_setmode(mlog, _mode);
     lock.unlock();
 
@@ -334,7 +334,7 @@ static void __async_log_shared_thread_operation() {
 
         for (auto it = shared_appenders()->begin(); it != shared_appenders()->end(); it++) {
             mtaf_log_appender *mlog = *it;
-            if (mlog->sg_log_close) {
+            if (mlog->sg_log_close.load()) {
                 continue;
             }
 
@@ -356,7 +356,7 @@ static void __async_log_thread_operation(void *arg) {
 
         __log_thread_task(mlog);
 
-        if (mlog->sg_log_close) {
+        if (mlog->sg_log_close.load()) {
             break;
         }
 
@@ -404,7 +404,7 @@ static void __appender_async(mtaf_log_appender *mlog, const mtaf_log_info *_info
 
     for (auto it = shared_appenders()->begin(); it != shared_appenders()->end(); it++) {
         mtaf_log_appender *mlog = *it;
-        if (mlog->sg_log_close)
+        if (mlog->sg_log_close.load())
             continue;
 
         if (mlog->sg_log_buff->GetData().Length() >= mlog->sg_bufferblock_length * 1 / 3 || (NULL != _info && LOG_LEVEL_FATAL == _info->level)) {
@@ -415,7 +415,7 @@ static void __appender_async(mtaf_log_appender *mlog, const mtaf_log_info *_info
 }
 
 void mtaf_log_appender_append(mtaf_log_appender *mlog, const char *log) {
-    if (mlog->sg_log_close) return;
+    if (mlog->sg_log_close.load()) return;
 
     if (mlog->sg_consolelog_open) mtaf_console_log(log);
 
@@ -426,7 +426,7 @@ void mtaf_log_appender_append(mtaf_log_appender *mlog, const char *log) {
 }
 
 void mtaf_log_appender_append_ex(mtaf_log_appender *mlog, const char *log, const mtaf_log_info *mLogInfo) {
-    if (mlog->sg_log_close) return;
+    if (mlog->sg_log_close.load()) return;
 
     if (mlog->sg_consolelog_open) mtaf_console_log(mLogInfo, log);
 
@@ -437,7 +437,7 @@ void mtaf_log_appender_append_ex(mtaf_log_appender *mlog, const char *log, const
 }
 
 void mtaf_log_appender_close(mtaf_log_appender *mlog) {
-    if (mlog->sg_log_close) return;
+    if (mlog->sg_log_close.load()) return;
 
     mlog->sg_log_close = true;
 

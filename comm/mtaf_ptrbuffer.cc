@@ -66,11 +66,11 @@ void PtrBuffer::Write(const void *_pBuffer, size_t _nLen, off_t _nPos) {
     MTAF_ASSERT(NULL != _pBuffer);
     MTAF_ASSERT(0 <= _nPos);
     MTAF_ASSERT((unsigned int)_nPos <= Length());
-    size_t copylen = (size_t)min(_nLen, max_length_ - _nPos);
-    length_ = (size_t)max(length_, copylen + _nPos);
+    size_t copylen = (size_t)min(_nLen, max_length_.load() - _nPos);
+    length_.store((size_t)max(length_.load(), copylen + _nPos));
     memcpy((unsigned char *)Ptr() + _nPos, _pBuffer, copylen);
 
-    if (length_ < max_length_ - 4) {
+    if (length_.load() < max_length_.load() - 4) {
         memset((unsigned char *)Ptr() + _nPos + copylen, 0, sizeof(char) * 3);
         memset((unsigned char *)Ptr() + _nPos + copylen + 3, '\r', sizeof(char));
     }
@@ -96,15 +96,15 @@ size_t PtrBuffer::Read(void *_pBuffer, size_t _nLen, off_t _nPos) const {
 void PtrBuffer::Seek(off_t _nOffset, TSeek _eOrigin) {
     switch (_eOrigin) {
         case kSeekStart:
-            pos_ = _nOffset;
+            pos_.store(_nOffset);
             break;
 
         case kSeekCur:
-            pos_ += _nOffset;
+            pos_.store(pos_.load() + _nOffset);
             break;
 
         case kSeekEnd:
-            pos_ = length_ + _nOffset;
+            pos_.store(length_.load() + _nOffset);
             break;
 
         default:
@@ -112,19 +112,19 @@ void PtrBuffer::Seek(off_t _nOffset, TSeek _eOrigin) {
             break;
     }
 
-    if (pos_ < 0)
-        pos_ = 0;
+    if (pos_.load() < 0)
+        pos_.store(0);
 
-    if ((unsigned int)pos_ > length_)
-        pos_ = length_;
+    if ((unsigned int)pos_.load() > length_.load())
+        pos_.store(length_.load());
 }
 
 void PtrBuffer::Length(off_t _nPos, size_t _nLenght) {
     MTAF_ASSERT(0 <= _nPos);
     MTAF_ASSERT((size_t)_nPos <= _nLenght);
     MTAF_ASSERT(_nLenght <= MaxLength());
-
-    length_ = max_length_ < _nLenght ? max_length_ : _nLenght;
+ 
+    length_.store(max_length_.load() < _nLenght ? max_length_.load() : _nLenght);
     Seek(_nPos, kSeekStart);
 }
 
@@ -145,26 +145,26 @@ const void *PtrBuffer::PosPtr() const {
 }
 
 off_t PtrBuffer::Pos() const {
-    return pos_;
+    return pos_.load();
 }
 
 size_t PtrBuffer::PosLength() const {
-    return (size_t)(length_ - pos_);
+    return (size_t)(length_.load() - pos_.load());
 }
 
 size_t PtrBuffer::Length() const {
-    return length_;
+    return length_.load();
 }
 
 size_t PtrBuffer::MaxLength() const {
-    return max_length_;
+    return max_length_.load();
 }
 
 void PtrBuffer::Attach(void *_pBuffer, size_t _nLen, size_t _maxlen) {
     Reset();
     parray_ = (unsigned char *)_pBuffer;
-    length_ = _nLen;
-    max_length_ = _maxlen;
+    length_.store(_nLen);
+    max_length_.store(_maxlen);
 }
 
 void PtrBuffer::Attach(void *_pBuffer, size_t _nLen) {
@@ -173,7 +173,7 @@ void PtrBuffer::Attach(void *_pBuffer, size_t _nLen) {
 
 void PtrBuffer::Reset() {
     parray_ = NULL;
-    pos_ = 0;
-    length_ = 0;
-    max_length_ = 0;
+    pos_.store(0);
+    length_.store(0);
+    max_length_.store(0);
 }

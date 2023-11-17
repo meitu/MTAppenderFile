@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MTAppenderFile"
-  s.version      = "0.4.4"
+  s.version      = "0.4.5"
   s.summary      = "A simplified high-performance log component for *OS base on Tencent Mars xlog."
 
   s.description  = <<-DESC
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.author       = { "Euan Chan" => "cqh@meitu.com" }
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "12.0"
 
   s.source       = { :git => "https://github.com/meitu/MTAppenderFile.git", :tag => "#{s.version}" }
 
